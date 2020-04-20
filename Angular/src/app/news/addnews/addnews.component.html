@@ -1,0 +1,74 @@
+<div class="wrapper">
+    <div id="formContent">
+
+        <div>
+            <img src="/assets/img/books.png" id="icon" alt="Books Icon" height="150">
+        </div>
+
+        <form #books="ngForm" (ngSubmit)="books.valid && onSubmit(books)">
+
+            <input type="text" #nid="ngModel" [(ngModel)]="newsService.selectedNews.nid" name="nid"
+                placeholder="News Id" required [ngClass]="{'invalid-textbox' :books.submitted && !nid.valid }">
+            <div *ngIf="books.submitted && !nid.valid">
+                <label class="validation-message">This field is required.</label>
+            </div>
+            <br>
+
+            <input type="text" #location="ngModel" [(ngModel)]="newsService.selectedNews.location" name="location"
+                placeholder="Location" required [ngClass]="{'invalid-textbox' :books.submitted && !location.valid }">
+            <div *ngIf="books.submitted && location.errors">
+                <label class="validation-message">This field is required.</label>
+            </div>
+
+            <input type="text" #headline="ngModel" [(ngModel)]="newsService.selectedNews.headline" name="headline"
+                placeholder="HeadLine" required [ngClass]="{'invalid-textbox' :books.submitted && !headline.valid }">
+            <div *ngIf="books.submitted && !headline.valid">
+                <label class="validation-message">This field is required.</label>
+            </div>
+            <br>
+
+            <input type="text" #des="ngModel" [(ngModel)]="newsService.selectedNews.des" name="des"
+                placeholder="Description" required [ngClass]="{'invalid-textbox' :books.submitted && !des.valid }">
+            <div *ngIf="books.submitted && des.errors">
+                <label class="validation-message">This field is required.</label>
+            </div>
+
+            <input type="text" #pincode="ngModel" [(ngModel)]="newsService.selectedNews.pincode" name="pincode"
+                placeholder="Pincode" required [ngClass]="{'invalid-textbox' :books.submitted && !pincode.valid }">
+            <div *ngIf="books.submitted && !pincode.valid">
+                <label class="validation-message">This field is required.</label>
+            </div>
+            <br>
+
+            <label style="color: grey;">Category &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <select class="ui compact selection dropdown" name="category" #category="ngModel"
+                [(ngModel)]="newsService.selectedNews.category" placeholder="category" required
+                [ngClass]="{'invalid-textbox' :books.submitted && !category.valid }">
+                <option style="color: grey;" value="Sports">Sports </option>
+                <option style="color: grey;" value="Health">Health</option>
+                <option style="color: grey;" value="Businness">Businness</option>
+                <option style="color: grey;" value="Eduction">Eduction</option>
+                <option style="color: grey;" value="Politics">Politics</option>
+            </select>
+            <div *ngIf="books.submitted && !category.valid">
+                <label class="validation-message"><br>This field is required.</label>
+            </div>
+
+            <input type="submit" value="Sign Up">
+        </form>
+        <!-- Success message -->
+        <div class="success" *ngIf="showSucessMessage">
+            Saved successfully
+        </div>
+
+        <!-- Error message -->
+        <div class="alert" *ngIf="serverErrorMessages">
+            {{serverErrorMessages}}
+        </div>
+
+        <form>
+            <input type="submit" value="Back" (click)="Back()">
+        </form>
+
+    </div>
+</div>
