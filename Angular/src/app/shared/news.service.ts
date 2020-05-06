@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 import { environment } from "../../environments/environment";
@@ -10,12 +10,13 @@ import { News } from "./news.model";
 export class NewsService {
   news: News[];
   selectedNews: News = {
+    _id: "",
     location: "",
     nid: "",
     headline: "",
     des: "",
     pincode: "",
-    category:"",
+    category: "",
   };
 
   noAuthHeader = { headers: new HttpHeaders({ NoAuth: "True" }) };
@@ -25,6 +26,7 @@ export class NewsService {
   //HttpMethods
   readonly baseURL = "http://localhost:3000/api/deleteNews";
 
+  readonly baseURL1 = "http://localhost:3000/api/update";
   postNews(news: News) {
     return this.http.post(
       environment.apiBaseUrl + "/bregister",
@@ -37,9 +39,9 @@ export class NewsService {
     return this.http.get(environment.apiBaseUrl + "/newsProfile");
   }
 
-  // updatebooks(b: Books) {
-  //   return this.http.put(this.baseURL, `/${b._id}`);
-  // }
+  updateNews(b: News) {
+    return this.http.put(this.baseURL1 + `/${b._id}`, b);
+  }
 
   deleteNews(_id: string) {
     return this.http.delete(this.baseURL + `/${_id}`);

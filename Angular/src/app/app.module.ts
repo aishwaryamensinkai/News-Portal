@@ -17,7 +17,6 @@ import { UserService } from "./shared/user.service";
 import { AuthGuard } from "./auth/auth.guard";
 import { AuthInterceptor } from "./auth/auth.interceptor";
 import { FirstPageComponent } from "./first-page/first-page.component";
-import { PageComponent } from "./page/page.component";
 import { FunctionComponent } from "./function/function.component";
 import { FeedbackComponent } from "./feedback/feedback.component";
 import { ViewfeedbackComponent } from "./viewfeedback/viewfeedback.component";
@@ -25,7 +24,8 @@ import { NewsComponent } from "./news/news.component";
 import { AddnewsComponent } from "./news/addnews/addnews.component";
 import { DeletenewsComponent } from "./news/deletenews/deletenews.component";
 import { ViewnewsComponent } from "./viewnews/viewnews.component";
-import { NewsviewComponent } from './newsview/newsview.component';
+import { NewsviewComponent } from "./newsview/newsview.component";
+import { UpdatenewsComponent } from './news/updatenews/updatenews.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,6 @@ import { NewsviewComponent } from './newsview/newsview.component';
     UserProfileComponent,
     SignInComponent,
     FirstPageComponent,
-    PageComponent,
     FunctionComponent,
     FeedbackComponent,
     ViewfeedbackComponent,
@@ -44,6 +43,7 @@ import { NewsviewComponent } from './newsview/newsview.component';
     DeletenewsComponent,
     ViewnewsComponent,
     NewsviewComponent,
+    UpdatenewsComponent,
   ],
   imports: [
     BrowserModule,

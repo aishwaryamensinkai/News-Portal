@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { News } from "../shared/news.model";
@@ -31,6 +31,7 @@ export class NewsviewComponent implements OnInit {
   }
   resetForm(form: NgForm) {
     this.newsService.selectedNews = {
+      _id: "",
       location: "",
       nid: "",
       headline: "",
@@ -41,5 +42,4 @@ export class NewsviewComponent implements OnInit {
     form.resetForm();
     this.serverErrorMessages = "";
   }
-
 }

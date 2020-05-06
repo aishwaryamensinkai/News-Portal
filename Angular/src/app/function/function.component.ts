@@ -28,6 +28,9 @@ export class FunctionComponent implements OnInit {
   viewnews() {
     this.router.navigate(["/viewnews"]);
   }
+  updatenews(){
+    this.router.navigate(["/updatenews"]);
+  }
   logout() {
     this.userService.deleteToken();
     this.router.navigate(["/login"]);

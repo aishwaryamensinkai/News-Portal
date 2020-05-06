@@ -13,7 +13,7 @@ router.get("/userProfile", jwtHelper.verifyJwtToken, ctrlUser.userProfile);
 
 router.post("/bregister", ctrlNews.bregister);
 router.get("/newsProfile", ctrlNews.newsProfile);
-router.patch("/update/:id", ctrlNews.update);
+router.put("/update/:id", ctrlNews.update);
 router.delete("/deleteNews/:nid", ctrlNews.deleteNews);
 
 router.post("/fregister", ctrlFeedback.fregister);

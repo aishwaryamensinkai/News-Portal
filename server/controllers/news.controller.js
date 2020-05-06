@@ -16,6 +16,7 @@ module.exports.bregister = (req, res) => {
     category: req.body.category,
     date: req.body.date,
   });
+
   news.save((err, doc) => {
     if (!err) {
       res.send(doc);
@@ -43,25 +44,34 @@ module.exports.newsProfile = (req, res, next) => {
   });
 };
 
+
 module.exports.update = (req, res) => {
-  const id = req.params.id;
-  const updateOps = {};
-  for (const ops of req.body) {
-    updateOps[ops.propName] = ops.value;
-  }
-  News.update({ _id: id }, { $set: updateOps })
-    .exec()
-    .then((result) => {
-      res.status(200).json({
-        message: "News updated",
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-      });
-    });
+  if (!ObjectId.isValid(req.params.id))
+    return res.status(400).send(`No record with given id : ${req.params.id}`);
+
+  var news = {
+    location: req.body.location,
+    nid: req.body.nid,
+    headline: req.body.headline,
+    des: req.body.des,
+    pincode: req.body.pincode,
+    category: req.body.category,
+  };
+
+  News.findByIdAndUpdate(
+    req.params.id,
+    { $set: news },
+    { new: true },
+    (err, doc) => {
+      if (!err) {
+        res.send(doc);
+      } else {
+        console.log(
+          "Error in News Update :" + JSON.stringify(err, undefined, 2)
+        );
+      }
+    }
+  );
 };
 
 module.exports.deleteNews = (req, res) => {

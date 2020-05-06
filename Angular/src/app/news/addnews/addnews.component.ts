@@ -44,6 +44,7 @@ export class AddnewsComponent implements OnInit {
 
   resetForm(form: NgForm) {
     this.newsService.selectedNews = {
+      _id:"",
       location: "",
       nid: "",
       headline: "",

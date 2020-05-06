@@ -31,6 +31,7 @@ export class DeletenewsComponent implements OnInit {
   }
   resetForm(form: NgForm) {
     this.newsService.selectedNews = {
+      _id:"",
       location: "",
       nid: "",
       headline: "",

@@ -25,6 +25,7 @@ var newsSchema = new mongoose.Schema({
     type: String,
     required: "Pinecode is required.",
     minlength: 6,
+    // maxlength:6,
   },
   category: {
     type: String,

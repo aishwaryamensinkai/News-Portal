@@ -53,22 +53,60 @@
             <div *ngIf="books.submitted && !category.valid">
                 <label class="validation-message"><br>This field is required.</label>
             </div>
-
-            <input type="submit" value="Sign Up">
+            <br>
+            <input type="submit" value="Update">
         </form>
         <!-- Success message -->
         <div class="success" *ngIf="showSucessMessage">
-            Saved successfully
+            Updated successfully
         </div>
 
         <!-- Error message -->
         <div class="alert" *ngIf="serverErrorMessages">
             {{serverErrorMessages}}
         </div>
-
         <form>
             <input type="submit" value="Back" (click)="Back()">
         </form>
+    </div>
+</div>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>News Id</th>
+                    <th>Location</th>
+                    <th>Headline</th>
+                    <th>Description</th>
+                    <th>Pincode</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor=" let b of newsService.news">
+                    <td>{{b.nid}}</td>
+                    <td>{{b.location}}</td>
+                    <td>{{b.headline}}</td>
+                    <td>{{b.des}}</td>
+                    <td>{{b.pincode}}</td>
+                    <td>{{b.category}}</td>
+                    <td>{{b.date}}</td>
+                    <td>
+                        <a class="action-btn" (click)="onEdit(b)">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
